@@ -1,12 +1,6 @@
-# URL: https://leetcode.com/problems/roman-to-integer/
-
 class Solution:
     def romanToInt(self, s: str) -> int:
-
-        integer = 0
-        n = len(s)-1
-
-        mp = {
+        integer = {
             'I':1,
             'V':5,
             'X':10,
@@ -15,10 +9,10 @@ class Solution:
             'D':500,
             'M':1000
         }
-
+        result=0
         for i, roman in enumerate(s):
-            if (i<n) and (mp[roman]<mp[s[i+1]]):
-                integer -= mp[roman]
+            if i<len(s)-1 and integer[roman] < integer[s[i+1]]:
+                result-=integer[roman]
             else:
-                integer+=mp[roman]
-        return integer
+                result+=integer[roman]
+        return result

@@ -1,8 +1,7 @@
 class Solution {
 public:
     int romanToInt(string s) {
-        int integer = 0;
-        map<char, int>mp = {
+        unordered_map<char, int>roman = {
             {'I',1},
             {'V',5},
             {'X',10},
@@ -11,15 +10,15 @@ public:
             {'D',500},
             {'M',1000}
         };
-
-        for(int i=0; i<(int)s.size(); i++) {
-            if(mp[s[i]] < mp[s[i+1]]) {
-                integer += (mp[s[i+1]]-mp[s[i]]);
-                i++;
+        int result = 0;
+        int n = s.size();
+        for(int i=0; i<n; i++) {
+            if(i<(n-1) and roman[s[i]]<roman[s[i+1]]) {
+                result-=roman[s[i]];
             }else {
-                integer+=mp[s[i]];
+                result+=roman[s[i]];
             }
         }
-        return integer;
+        return result;
     }
 };

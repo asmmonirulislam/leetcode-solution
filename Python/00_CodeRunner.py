@@ -1,13 +1,14 @@
-from typing import List
+roman = {
+    1:'I',
+    5:'V',
+    10:'X',
+    50:'L',
+    100:'C',
+    500:'D',
+    1000:'M'
+}
 
-def fibo(n:int, dp:List[int])->int:
-    if n<=1: return n
-    elif dp[n] != -1: return dp[n]
-    dp[n] = fibo(n-1, dp)+fibo(n-2, dp)
-    return dp[n]
-
-def fib(n:int)->int:
-    dp = [-1 for _ in range(n+1)]
-    print (fibo(n, dp))
-    
-fib(6)
+if 1500 in roman:
+    print("Hello")
+else:
+    print("Bye")
