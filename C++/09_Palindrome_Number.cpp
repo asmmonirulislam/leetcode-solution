@@ -1,16 +1,16 @@
-// URL: https://leetcode.com/problems/palindrome-number/
-
 class Solution {
 public:
     bool isPalindrome(int x) {
         if(x<0) return false;
-        int temp1=x, temp2=0;
+        long long div=1;
+        while(x>(div*10)) div*=10;
         while(x){
-            int rem = x%10;
-            temp2 = (temp2*10)+rem;
-            x/=10;
+            int left = x/div;
+            int right = x%10;
+            if(left != right) return false;
+            x = (x%div)/10;
+            div/=100;
         }
-        if(temp1==temp2) return true;
-        return false;
+        return true;
     }
 };
